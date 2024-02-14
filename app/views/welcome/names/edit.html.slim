@@ -1,0 +1,19 @@
+- provide :meta_title, 'Your name'
+
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      .panel.panel-brand.panel-top
+        .panel-body
+          h1.h3 Now let’s get a little personal.
+          = form_with(local: true, model: @user, url: welcome_name_path, method: :put, builder: CustomFormBuilder, html: { role: 'form' }) do |f|
+            = f.group :first_name, class: 'form-group-lg'
+              = f.label :first_name
+              = f.errors :first_name
+              = f.text_field :first_name, placeholder: 'Your first name'
+            p
+              = fa_icon 'info-circle'
+              |  Our experience shows you’ll be more likely to reach your goals when we personally address our messages to you by name.
+            = f.submit "That's me", class: "btn btn-block btn-primary btn-lg"
+
+      = render 'shared/progress_bar', percentage: 60

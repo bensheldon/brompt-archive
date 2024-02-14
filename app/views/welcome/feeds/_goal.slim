@@ -1,0 +1,47 @@
+- provide :meta_title, 'Your goal'
+
+h1.h3 Let's review your writing and set a goal
+br
+
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      strong=> reminder.feed.title
+      small= reminder.feed.website_url
+  .panel-body
+    = render 'shared/reminders/feed_stat', feed_stat: FeedStat.new(reminder.feed)
+
+hr
+
+= form_with(local: true, model: reminder, url: { action: :create }, method: :post, builder: CustomFormBuilder) do |f|
+  = f.hidden_field :feed_url
+
+  fieldset.radio-highlight
+    legend.h4 Ideally, how often do you want to write or publish?
+    = f.errors :remind_after_days
+    .radio
+      label
+        = f.radio_button :remind_after_days, 1
+        |  Every day
+    .radio
+      label
+        = f.radio_button :remind_after_days, 3, checked: reminder.remind_after_days.nil?
+        |  Every 3 days
+    .radio
+      label
+        = f.radio_button :remind_after_days, 7
+        |  Once a week
+    .radio
+      label
+        = f.radio_button :remind_after_days, 14
+        |  Every two weeks
+    .radio
+      label
+        = f.radio_button :remind_after_days, 30
+        |  Once a month
+
+  p
+    = fa_icon 'info-circle'
+    |  Publishing something new once a week is a good start and helps build your audience. You can always update your goal as you go.
+
+  = f.submit "Set your goal", class: "btn btn-block btn-primary btn-lg"

@@ -1,0 +1,23 @@
+= form_with local: true, model: reminder, url: { action: (reminder.persisted? ? :update : :create) }, method: (reminder.persisted? ? :put : :post), builder: CustomFormBuilder do |f|
+  = f.group :base
+    = f.errors :base
+
+  = f.group :feed_url
+    = f.label :feed_url, 'Feed URL'
+    = f.errors :feed_url
+    = f.text_field :feed_url, placeholder: 'http://your-blog.com/feed.xml', disabled: reminder.persisted?
+
+  = f.group :remind_after_days
+    = f.label :remind_after_days, "My goal is to post every..."
+    = f.errors :remind_after_days
+    =< f.select :remind_after_days, Reminder::REMIND_AFTER_DAYS.invert
+
+  = f.group :repeat_remind_after_days
+    = f.label :repeat_remind_after_days, "If I still don't meet my goal, keep reminding me..."
+    = f.errors :repeat_remind_after_days
+    =< f.select :repeat_remind_after_days, Reminder::REPEAT_REMIND_AFTER_DAYS.invert, include_blank: 'Do not repeat'
+
+  = f.submit "#{reminder.persisted? ? 'Update' : 'Create'} goal", class: "btn btn-primary"
+
+  - if reminder.persisted?
+    => link_to "Delete", account_reminder_path(reminder.id), method: :delete, data: { confirm: "Are you sure you want to delete this reminder?" }, class: 'btn btn-link'

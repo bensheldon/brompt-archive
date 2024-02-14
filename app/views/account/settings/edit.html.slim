@@ -1,0 +1,35 @@
+- user = resource
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      .panel.panel-brand.panel-top
+        .panel-body
+          h1 Edit Account
+          = form_with(local: true, model: resource, as: resource_name, url: edit_account_settings_path, method: :put, builder: CustomFormBuilder, html: { role: 'form' }) do |f|
+            = f.group :email, class: 'form-group-lg'
+              = f.label :email
+              = f.errors :email
+              = f.email_field :email, autofocus: true, autocomplete: "email"
+
+            - if user.pending_reconfirmation?
+              em Currently waiting confirmation for: #{user.unconfirmed_email}
+
+            = f.group :password, class: 'form-group-lg'
+              = f.label :password
+              i  leave blank if you don't want to change it
+              = f.errors :password
+              = f.password_field :password, autocomplete: "new-password"
+
+            .well
+              = f.group :current_password, class: 'form-group-lg'
+                = f.label :current_password
+                p  <em>We need your current password to confirm your changes.</em>
+                = f.errors :current_password
+                = f.password_field :current_password, autocomplete: "current-password"
+
+            = f.submit 'Update', class: "btn btn-block btn-primary btn-lg"
+
+      / h3 Cancel my account
+      / p
+      /   | Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+      / = link_to "Back", :back

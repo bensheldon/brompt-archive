@@ -1,0 +1,7 @@
+linters:
+  FileLength:
+    enabled: false
+  LineLength:
+    enabled: false
+  ControlStatementSpacing:
+    enabled: false

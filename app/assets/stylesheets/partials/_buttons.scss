@@ -1,0 +1,15 @@
+.btn-outline {
+  background-color: transparent;
+  color: inherit;
+  transition: all .25s;
+
+  &.btn-primary {
+    color: $btn-primary-bg !important;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: $btn-primary-color !important;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+- provide :meta_title, 'Create your account'
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      .panel.panel-brand.panel-top
+        .panel-body
+          h2.h4 Hi, #{current_user.first_name}! 👋
+          h1.h3 Create your account
+
+          = form_with(local: true, model: @user, url: { action: :update }, method: :put, builder: CustomFormBuilder, html: { role: 'form' }) do |f|
+            = f.group :email, class: 'form-group-lg'
+              = f.label :email
+              = f.errors :email
+              = f.email_field :email, placeholder: 'Your email address'
+            = f.group :password, class: 'form-group-lg'
+              = f.label :password
+              = f.errors :password
+              = f.password_field :password, placeholder: 'A secret password'
+
+            p
+              = fa_icon 'info-circle'
+              |  We’ll use your email to identify you and send you messages to help you meet your writing or publishing goals.
+            = f.submit "Create account", class: "btn btn-block btn-primary btn-lg"
+
+      = render 'shared/progress_bar', percentage: 90

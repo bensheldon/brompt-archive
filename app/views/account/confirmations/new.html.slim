@@ -1,0 +1,11 @@
+= render 'devise/shared/session_nav' do
+  h1.h3 Confirm your email
+  = form_with(local: true, model: resource, as: resource_name, url: { action: :create }, method: :post, builder: CustomFormBuilder, html: { role: 'form' }) do |f|
+    = f.group :email, class: 'form-group-lg'
+      = f.label :email, class: 'sr-only'
+      = f.errors :email
+      = f.email_field :email, placeholder: 'Your email address'
+    p
+      = fa_icon 'info-circle'
+      |  We’ll send you a confirmation email. Please click the link in the email to confirm.
+    = f.submit 'Confirm my email', class: "btn btn-block btn-primary btn-lg"

@@ -1,0 +1,15 @@
+- feed = @message.reminder.feed
+- feed_stat = FeedStat.new(feed)
+
+p It's been #{time_ago_in_words(feed_stat.last_item.published_at)} since you last posted to "#{feed.title}". This was the last post:
+
+p= link_to feed_stat.last_item.title, feed_stat.last_item.url
+
+p= render 'shared/reminders/feed_stat', feed_stat: feed_stat
+
+p So hop to!
+
+p
+  | ---
+  br
+  | Sent by Brompt. #{link_to 'Change or delete', reminder_url(@message.reminder)} your reminder.

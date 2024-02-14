@@ -1,0 +1,18 @@
+- provide :meta_title, 'Sign in'
+
+= render 'devise/shared/session_nav' do
+  h1.h2 Sign in
+  = form_with(local: true, model: resource, as: resource_name, url: session_path(resource_name), builder: CustomFormBuilder) do |f|
+    = f.group :email, class: 'form-group-lg'
+      = f.label :email
+      = f.errors :email
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.group :password, class: 'form-group-lg'
+      = f.label :password
+      = f.errors :password
+      = f.password_field :password, autocomplete: "current-password"
+    / - if devise_mapping.rememberable?
+    /   = f.group :remember_me, class: 'form-group-lg'
+    /     = f.check_box :remember_me
+    /     = f.label :remember_me
+    = f.submit "Sign in", class: "btn btn-block btn-primary btn-lg"

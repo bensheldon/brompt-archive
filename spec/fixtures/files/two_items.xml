@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>XML.com</title>
+    <link>http://www.xml.com/</link>
+    <description>XML.com features a rich mix of information and services for the XML community.</description>
+    <language>en-us</language>
+    <item>
+      <title>The .NET Schema Object Model</title>
+      <link>http://www.xml.com/pub/a/2002/12/05/som.html</link>
+      <description>Priya Lakshminarayanan describes in detail the use of the .NET Schema Object Model for programmatic manipulation of W3C XML Schemas.</description>
+      <dc:creator>Priya Lakshminarayanan</dc:creator>
+      <dc:date>2003-12-05</dc:date>
+    </item>
+    <item>
+      <title>SVG's Past and Promising Future</title>
+      <link>http://www.xml.com/pub/a/2002/12/04/svg.html</link>
+      <description>In this month's SVG column, Antoine Quint looks back at SVG's journey through 2002 and looks forward to 2003.</description>
+      <dc:creator>Antoine Quint</dc:creator>
+      <dc:date>2002-12-04</dc:date>
+    </item>
+  </channel>
+</rss>

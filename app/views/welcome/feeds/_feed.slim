@@ -1,0 +1,25 @@
+- provide :meta_title, 'Your writing'
+
+h1.h3 Where do you write online?
+= form_with(local: true, model: reminder, url: { action: :new }, method: :get, builder: CustomFormBuilder, html: { role: 'form' }) do |f|
+  = f.group :base
+    = f.errors :base
+
+  = f.group :feed_url, class: 'form-group-lg'
+    = f.label :feed_url, class: 'sr-only'
+    = f.errors :feed_url
+    = f.text_field :feed_url, placeholder: 'https://your-website.com/blog'
+
+  markdown:
+    #{fa_icon 'info-circle'} This should be the URL of your blog or website. For example:
+
+    - `https://medium.com/@bensheldon`
+    - `https://veganlunchbox.blogspot.com/`
+    - `https://bigmotivator.wordpress.com`
+    - `https://delong.typepad.com/`
+    - Your custom domain
+    - Your RSS feed
+
+    Brompt tracks your writing and publishing through a technology called RSS. Most online blogs and publishing platforms offer RSS.
+
+  = f.submit "Review your writing", class: "btn btn-block btn-primary btn-lg"

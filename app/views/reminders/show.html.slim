@@ -1,0 +1,6 @@
+.row
+  .col-md-4.col-md-offset-4
+    h1 Edit reminder
+    = render 'form'
+    - if @reminder.feed.items.any?
+      = render 'shared/reminders/feed', reminder: @reminder

@@ -1,0 +1,10 @@
+h2.h4 Feed items
+.list-group
+  - reminder.feed.recent_items.each do |item|
+    =< link_to item.url, class: "list-group-item", rel: "nofollow noreferrer noopener"
+      h3.h6
+        =< item.title
+        .pull-right
+          .badge<>
+            = time_ago_in_words(item.published_at)
+            |  ago

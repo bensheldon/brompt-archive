@@ -1,0 +1,13 @@
+css:
+  body {
+    background-color: white;
+  }
+
+.container
+  - @groups.each do |(group, images)|
+    h2= group.humanize
+    .row
+      - images.sort.each do |image|
+        .col-xs-6
+          = link_to image_path(image) do
+            = image_tag image, style: 'width: 100%; border: 1px solid lightgray; border-radius: 5px; margin-top: 15px; margin-bottom: 15px'

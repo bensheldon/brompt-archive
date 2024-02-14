@@ -1,0 +1,17 @@
+defaults: &defaults
+  google_analytics_id: ''
+  facebook_pixel_id: ''
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  google_analytics_id: ''
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  google_analytics_id: 'UA-870047-6'

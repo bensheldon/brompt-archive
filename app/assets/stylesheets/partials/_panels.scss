@@ -1,0 +1,14 @@
+.panel-brand {
+  @extend .panel-default;
+  border-top: 6px solid $brand-primary;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  .panel-heading {
+    background-color: inherit;
+  }
+}
+
+.panel-top {
+  margin-top: 40px;
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Brompt",
+  "description": "The intelligent accountability partner for writers.",
+  "website": "https://brompt.com/",
+  "repository": "https://github.com/bensheldon/brompt-rails",
+  "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "value": "production"
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_MAX_THREADS": {
+      "description": "Number of Puma threads to run.",
+      "value": "2"
+    },
+    "SECRET_KEY_BASE": {
+      "description": "Secret key base for Rails.",
+      "generator": "secret"
+    },
+    "SMTP_ADDRESS": {
+      "required": false
+    },
+    "SMTP_PASSWORD": {
+      "required": false
+    },
+    "SMTP_PORT": {
+      "required": false
+    },
+    "SMTP_USERNAME": {
+      "required": false
+    },
+    "WEB_CONCURRENCY": {
+      "description": "Number of Puma processes to run.",
+      "value": "0"
+    }
+  },
+  "formation": {},
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "14"
+      }
+    }
+  ],
+  "scripts": {
+    "postdeploy": "POSTGRES_STATEMENT_TIMEOUT=90s bin/rails heroku:postdeploy"
+  }
+}

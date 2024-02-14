@@ -1,0 +1,23 @@
+nav.navbar.navbar-default role="navigation"
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-navigation" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        i.fa class=(current_user ? 'fa-user' : 'fa-bars') aria-hidden="true"
+      a.navbar-brand href=account_reminders_path Brompt
+
+    #navbar-navigation.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          a href=account_reminders_path Goals
+        li
+          a href=edit_account_settings_path Settings
+        - if current_user&.is_admin?
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+              | Admin <span class="caret"></span>
+            ul.dropdown-menu
+              li
+                a href=good_job_path GoodJob 👍
+        li
+          a href=destroy_user_session_path Sign out

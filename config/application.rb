@@ -1,0 +1,27 @@
+require_relative 'boot'
+
+require 'rails/all'
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
+
+module Brompt
+  class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 6.1
+
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration can go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded after loading
+    # the framework and any gems in your application.
+
+    config.active_job.queue_adapter = :good_job
+
+    config.tracking = Rails.application.config_for(:tracking)
+
+    config.action_mailer.default_url_options = {
+      host: Rails.application.secrets.hostname
+    }
+  end
+end

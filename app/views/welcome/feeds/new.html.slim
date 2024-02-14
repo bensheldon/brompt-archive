@@ -1,0 +1,12 @@
+- needs_feed_url = @reminder.feed_url.blank? || @reminder.errors.present?
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      .panel.panel-brand.panel-top
+        .panel-body
+          - if needs_feed_url
+            = render 'feed', reminder: @reminder
+          - else
+            = render 'goal', reminder: @reminder
+
+      = render 'shared/progress_bar', percentage: needs_feed_url ? 10 : 40

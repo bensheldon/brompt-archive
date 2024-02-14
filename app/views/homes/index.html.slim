@@ -1,0 +1,91 @@
+- provide :meta_description, "Become a better blogger and marketer with scheduled reminders to keep your writing on track."
+
+.container
+  .row
+    .col-sm-8.col-sm-push-2.col-md-6.col-md-push-3
+      .jumbotron.text-center
+        .row
+          .col-sm-8.col-sm-push-2
+            .notification-bubble
+              = render 'shared/notification_svg'
+        br
+        h1 Brompt watches your online writing and sends you helpful reminders when you don't publish.
+
+.container
+  .row.text-center
+    .col-sm-4
+      h2.h4 Bloggers and Writers
+      p Brompt's writing reminders help you develop a more consistent practice and audience.
+    .col-sm-4
+      h2.h4 Editors and Groups
+      p Receive notifications when new posts aren't being regularly published.
+    .col-sm-4
+      h2.h4 Makers and Marketers
+      p Track publishing trends across multiple blogs, feeds and channels.
+
+hr
+
+.container
+  .text-center
+    - if !current_user || !current_user.confirmed?
+      = link_to 'Get started!', new_welcome_feed_path, class: "btn btn-primary btn-lg"
+      | &nbsp;&nbsp;&nbsp;
+      = link_to 'Sign in', new_session_path('user'), class: "btn btn-outline btn-primary btn-lg"
+    - else
+      = link_to 'Visit your account', account_reminders_path, class: "btn btn-outline btn-primary btn-lg"
+
+hr
+
+.container
+  .row.text-center
+    .col-sm-6
+      h2.h4
+        small Since 2008
+        br<>
+        | Hundreds of people are already using Brompt to become better writers.
+    br.visible-xs-block
+    .col-sm-6
+      h2.h4
+        small According to our survey
+        br<>
+        | 75% of users find Brompt's reminders to be helpful.
+
+hr
+
+.container
+  .row.text-center
+    .col-sm-4
+      h2.h4
+        small Solves writers' problems
+        br<>
+        | "I have better intentions than practice."
+    .col-sm-4
+      h2.h4
+        small Timely reminders
+        br<>
+        | "It does exactly what I want it to do."
+
+    .col-sm-4
+      h2.h4
+        small Friendly and supportive
+        br<>
+        | "If anything, it's nice to get new mail!"
+
+hr
+
+.container
+  .row
+    .col-sm-5.col-sm-offset-2
+      .media
+        .media-left
+          = image_tag 'ben.jpg', class: 'media-object img-circle', width: 80, alt: ''
+        .media-body
+          | <strong>Ben Sheldon</strong> is an avid creative and business writer. In addition to <strong>Brompt</strong>, he also created <strong><a href="https://panlexicon.com">Panlexicon</a></strong> and <strong><a href="https://dayoftheshirt.com">Day of the Shirt</a></strong>.
+    .col-sm-3
+      br.visible-xs-block
+      ul.list-unstyled.text-center-xs
+        li #{fa_icon "twitter"} Tweet me at <strong>#{link_to '@brompt', 'https://twitter.com/brompt', target: '_blank', rel: 'noopener'}</strong>
+        li #{fa_icon 'paper-plane' } Email me at <strong>#{link_to 'ben@brompt.com', 'mailto:ben@brompt.com'}</strong>
+
+br
+br

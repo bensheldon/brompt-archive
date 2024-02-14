@@ -1,0 +1,35 @@
+- provide :meta_title, 'Goals'
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      h1
+        ' Goals
+
+        - if current_user.can_create_reminders?
+          = link_to new_account_reminder_path, class: 'btn btn-primary btn-sm pull-right', style: 'margin-top: 5px' do
+            => fa_icon "plus"
+            | New Goal
+        - else
+          button.disabled class='btn btn-primary btn-sm pull-right' style='margin-top: 5px' data-html="true" data-placement="bottom" data-toggle="tooltip" title="You've reached the limit of of your account. <strong>Please upgrade.</strong>"
+            => fa_icon "plus"
+            | New Goal
+
+      - @reminders.each do |reminder|
+        .panel.panel-brand.panel-top
+          .panel-heading
+            h2.h4.panel-title
+              = link_to reminder.feed_url do
+                = reminder.feed.title
+                =< fa_icon 'external-link'
+              .pull-right= link_to 'Edit', edit_account_reminder_path(reminder.id)
+              br<>
+              small Every #{pluralize reminder.remind_after_days, 'day'}
+          .panel-body
+            p= render 'shared/reminders/feed_stat', feed_stat: FeedStat.new(reminder.feed)
+
+      .well
+        .row
+          .col-sm-8
+            p <strong>Upgrade your account</strong> to create an unlimited number of goals.
+          .col-sm-4
+            => link_to "Upgrade", account_upgrade_path, data: true, method: :put, class: 'btn btn-default btn-block'

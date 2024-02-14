@@ -1,0 +1,28 @@
+- provide :meta_title, 'Hurray'
+
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      .panel.panel-brand.panel-top
+        .panel-body
+          h2.h4 #{current_user.first_name}, we're all set!
+          h1.h3 Hurray! 🎉
+          p You’re all set to track your writing or publishing goal. You will receive emails from us if you fall behind and we’ll keep you motivated to be successful.
+          p Here's what you can do next:
+          ul
+            li #{link_to("Add to or change", account_reminders_path)} your goals.
+            / li Read the research behind Brompt
+            li Make the <a role="button" onclick="window.confetti.drop()">confetti drop</a> again.
+            li <em>Continue writing to reach your goals.</em>
+          br
+          = link_to "Manage goals", account_reminders_path, class: 'btn btn-default btn-lg btn-block'
+
+      = render 'shared/progress_bar', percentage: 100
+
+canvas#canvas
+javascript:
+  $(function() {
+    window.confetti = window.Confetti();
+    confetti.initialize();
+    confetti.drop();
+  });

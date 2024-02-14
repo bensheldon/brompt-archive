@@ -1,0 +1,8 @@
+- if feed_stat.recent_items.empty?
+  | We didn’t find any items in your sites feed. It doesn’t look like you’ve published anything yet.
+- elsif feed_stat.recent_items.size == 1
+  | Your feed only has one item. It’s been #{time_ago_in_words feed_stat.last_item.published_at } since you last posted.
+- else
+  | You publish on average every #{distance_of_time_in_words Time.current - feed_stat.average_item_duration, Time.current}, based on your last #{pluralize feed_stat.recent_items.size, 'post'}.
+  |  The longest time period between posts is #{distance_of_time_in_words Time.current - feed_stat.item_durations.max, Time.current}.
+  |  It’s been #{time_ago_in_words feed_stat.last_item.published_at} since you last posted.

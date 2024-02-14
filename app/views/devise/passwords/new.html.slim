@@ -1,0 +1,8 @@
+= render 'devise/shared/session_nav' do
+  h1.h2 Reset your password
+  = form_with(local: true, model: resource, as: resource_name, url: password_path(resource_name), method: :post, builder: CustomFormBuilder) do |f|
+    = f.group :email, class: 'form-group-lg'
+      = f.label :email
+      = f.errors :email
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.submit "Send me reset password instructions", class: "btn btn-block btn-primary btn-lg"

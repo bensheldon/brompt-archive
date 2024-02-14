@@ -1,0 +1,14 @@
+- provide :meta_title, 'Change a goal'
+
+.container
+  .row
+    .col-sm-6.col-sm-push-3
+      nav
+        p= link_to '← All goals', account_reminders_path
+
+      h1 Edit goal
+      .panel.panel-default
+        .panel-body
+          = render 'form', reminder: @reminder
+      - if @reminder.persisted?
+        = render 'shared/reminders/feed', reminder: @reminder
